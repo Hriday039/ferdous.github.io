@@ -1,21 +1,27 @@
 import { FadeIn } from "../AnimatedSection";
 import { Badge } from "@/components/ui/badge";
+import { ExternalLink } from "lucide-react";
 
-const conferences = [
-  "Ali, F.B. et al. (2024). AttentionVGG: Modified VGG-16 for Alzheimer Disease Classification. ICCIT, IEEE.",
-  "Paul, L., Ali, F.B. et al. (2024). Self-Supervised Contrastive Learning for Potato Leaf Disease Classification. ICCIT, IEEE.",
-  "Paul, L. et al. (2024). Transfer Learning for Brain Tumor Classification from MRI Images. SPICSCON, IEEE.",
-  "Ali, F.B. et al. (2023). Deep Transfer Learning for Potato Leaf Disease Classification. ICCIT, IEEE.",
-  "Khan, N.A. et al. (2023). Music Recommendation Using Psychological Scale. Springer.",
-  "Rahman, P. et al. (2023). Classifying Bangla Health Misinformation Using ML. ICMLC, IEEE.",
-  "Mohalder, R.D. et al. (2022). Deep Learning-Based Colon Cancer Tumor Prediction. ICCIT, IEEE.",
-  "Nahid, A.A., Ali, F.B. & Kong, Y. (2017). Histopathological Breast Image Classification with CNN. ICCIT, IEEE.",
+interface Publication {
+  title: string;
+  link?: string;
+}
+
+const conferences: Publication[] = [
+  { title: "Ali, F.B. et al. (2024). AttentionVGG: Modified VGG-16 for Alzheimer Disease Classification. ICCIT, IEEE.", link: "https://ieeexplore.ieee.org/" },
+  { title: "Paul, L., Ali, F.B. et al. (2024). Self-Supervised Contrastive Learning for Potato Leaf Disease Classification. ICCIT, IEEE.", link: "https://ieeexplore.ieee.org/" },
+  { title: "Paul, L. et al. (2024). Transfer Learning for Brain Tumor Classification from MRI Images. SPICSCON, IEEE.", link: "https://ieeexplore.ieee.org/" },
+  { title: "Ali, F.B. et al. (2023). Deep Transfer Learning for Potato Leaf Disease Classification. ICCIT, IEEE.", link: "https://ieeexplore.ieee.org/" },
+  { title: "Khan, N.A. et al. (2023). Music Recommendation Using Psychological Scale. Springer.", link: "https://link.springer.com/" },
+  { title: "Rahman, P. et al. (2023). Classifying Bangla Health Misinformation Using ML. ICMLC, IEEE.", link: "https://ieeexplore.ieee.org/" },
+  { title: "Mohalder, R.D. et al. (2022). Deep Learning-Based Colon Cancer Tumor Prediction. ICCIT, IEEE.", link: "https://ieeexplore.ieee.org/" },
+  { title: "Nahid, A.A., Ali, F.B. & Kong, Y. (2017). Histopathological Breast Image Classification with CNN. ICCIT, IEEE.", link: "https://ieeexplore.ieee.org/" },
 ];
 
-const journals = [
-  "Simons, G. et al. (2022). Public Perception of Media's Role during COVID-19. World of Media.",
-  "Alam, M.K. et al. (2021). Mental Health Condition of Home-Confined University Students. J. Public Health.",
-  "Yasmin, S. et al. (2021). Psychological Impact of COVID-19 Among Banking Employees. Int. J. Mental Health.",
+const journals: Publication[] = [
+  { title: "Simons, G. et al. (2022). Public Perception of Media's Role during COVID-19. World of Media.", link: "https://worldofmedia.online/" },
+  { title: "Alam, M.K. et al. (2021). Mental Health Condition of Home-Confined University Students. J. Public Health.", link: "https://link.springer.com/" },
+  { title: "Yasmin, S. et al. (2021). Psychological Impact of COVID-19 Among Banking Employees. Int. J. Mental Health.", link: "https://www.tandfonline.com/" },
 ];
 
 const ResearchSection = () => {
@@ -41,8 +47,16 @@ const ResearchSection = () => {
           </h3>
           <div className="space-y-4 mb-14">
             {conferences.map((pub, i) => (
-              <div key={i} className="pl-4 border-l-2 border-border hover:border-primary transition-colors duration-300">
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{pub}</p>
+              <div key={i} className="group pl-4 border-l-2 border-border hover:border-primary transition-colors duration-300">
+                <a
+                  href={pub.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-start gap-2 font-body text-sm text-muted-foreground leading-relaxed hover:text-foreground transition-colors"
+                >
+                  <span className="flex-1">{pub.title}</span>
+                  <ExternalLink size={14} className="mt-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
+                </a>
               </div>
             ))}
           </div>
@@ -52,8 +66,16 @@ const ResearchSection = () => {
           <h3 className="font-display text-lg font-semibold text-foreground mb-6">Journal Publications</h3>
           <div className="space-y-4">
             {journals.map((pub, i) => (
-              <div key={i} className="pl-4 border-l-2 border-border hover:border-accent transition-colors duration-300">
-                <p className="font-body text-sm text-muted-foreground leading-relaxed">{pub}</p>
+              <div key={i} className="group pl-4 border-l-2 border-border hover:border-accent transition-colors duration-300">
+                <a
+                  href={pub.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-start gap-2 font-body text-sm text-muted-foreground leading-relaxed hover:text-foreground transition-colors"
+                >
+                  <span className="flex-1">{pub.title}</span>
+                  <ExternalLink size={14} className="mt-1 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
+                </a>
               </div>
             ))}
           </div>
